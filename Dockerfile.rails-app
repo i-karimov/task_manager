@@ -1,11 +1,21 @@
 FROM ruby:2.7.1-alpine
 
-ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs yarn less tzdata git postgresql-client bash screen gcompat"
+ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl libstdc++ yarn less tzdata git postgresql-client bash screen gcompat"
 ARG RAILS_ROOT=/rails_app
 
 RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $PACKAGES
+
+ENV NODE_PACKAGE_URL https://unofficial-builds.nodejs.org/download/release/v14.4.0/node-v14.4.0-linux-x64-musl.tar.xz
+RUN wget $NODE_PACKAGE_URL
+RUN mkdir -p /opt/nodejs
+RUN tar -xf node-v14.4.0-linux-x64-musl.tar.xz --directory /opt/nodejs --strip-components=1
+RUN rm *musl.tar.xz
+RUN ln -s /opt/nodejs/bin/node /usr/local/bin/node
+RUN ln -s /opt/nodejs/bin/npm /usr/local/bin/npm
+
+RUN npm install -g npm@6.14.18
 
 RUN gem install bundler:2.1.4
 
