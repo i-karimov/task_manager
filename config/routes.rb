@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resource :boards, only: [:show]
-    resource :session, only: :new
+    resource :session, only: %i[new create destroy]
   end
 end
