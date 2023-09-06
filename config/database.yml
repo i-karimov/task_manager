@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  host: db
+  username: <%= ENV['DATABASE_USERNAME'] || nil %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  port: 5432
+  encoding: unicode
+
+development:
+  <<: *default
+  database: task_manager_development
+
+test:
+  <<: *default
+  database: task_manager_test
+
+production:
+  <<: *default
+  database: task_manager_test
