@@ -5,7 +5,7 @@ FactoryBot.define do
     first_name
     last_name
     password
-    email { 'MyString' }
+    email { "#{SecureRandom.uuid.gsub('-', '')}@mail.com" }
     avatar { 'MyString' }
     type { '' }
 

@@ -11,7 +11,7 @@ module Web
 
       if @developer.save
         sign_in @developer
-        redirect_to boards_path
+        redirect_to board_path
       else
         render :new
       end
