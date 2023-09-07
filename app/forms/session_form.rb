@@ -19,7 +19,7 @@ class SessionForm
   private
 
   def user_valid?
-    return unless user.blank? || !user.authenticate(password)
+    return if user.present? && user.authenticate(password)
 
     errors.add(:email, "email or password doesn't match")
   end

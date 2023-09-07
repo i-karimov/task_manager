@@ -2,7 +2,7 @@
 
 module Web
   class ApplicationController < ApplicationController
-    include Concerns::AuthHelper
+    include AuthHelper
     helper_method :current_user
   end
 end
