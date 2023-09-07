@@ -1,6 +1,0 @@
-version: '3'
-
-services:
-  rails-app:
-    volumes:
-      - ./:$RAILS_ROOT:cached
