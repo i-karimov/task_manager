@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Access denied (403)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -55,12 +55,13 @@
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
+  <!-- This file lives in public/403.html -->
   <div class="dialog">
     <div>
-      <h1>Forbidden.</h1>
-      <p>You have no access to this page.</p>
+      <h1>Forbidden</h1>
+      <p>The operation you requested is only available to administrators (HTTP 403).</p>
     </div>
+    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
