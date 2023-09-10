@@ -6,6 +6,8 @@ module Web
 
     def index; end
 
-    def show; end
+    def show
+      render react_component: 'TaskBoard', props: {}
+    end
   end
 end
