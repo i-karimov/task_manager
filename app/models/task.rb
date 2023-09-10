@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[assignee_id author_id created_at description expired_at id name state updated_at]
+  end
+
   belongs_to :author, class_name: 'User'
   belongs_to :assignee, class_name: 'User', optional: true
 

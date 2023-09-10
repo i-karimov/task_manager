@@ -7,7 +7,11 @@ FactoryBot.define do
 
   sequence(:email) { "#{SecureRandom.uuid.gsub('-', '')}@mail.com" }
 
+  # sequence :date, aliases: %i[expired_at] do
+  #   rand(2.years).seconds.from_now.strftime('%F')
+  # end
+
   sequence :date, aliases: %i[expired_at] do
-    rand(2.years).seconds.from_now.strftime('%F')
+    rand(2.years).seconds.from_now.to_date
   end
 end
