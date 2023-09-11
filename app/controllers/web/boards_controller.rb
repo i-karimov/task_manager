@@ -4,9 +4,8 @@ module Web
   class BoardsController < Web::ApplicationController
     before_action :authenticate_user!
 
-    def index; end
-
     def show
+      puts '=' * 100
       render react_component: 'TaskBoard', props: {}
     end
   end

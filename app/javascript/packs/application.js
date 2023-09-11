@@ -3,14 +3,15 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from '@rails/ujs';
-import * as ActiveStorage from '@rails/activestorage';
-import 'channels';
-import 'material-design-lite/material.js';
-import WebpackerReact from 'webpacker-react';
-import TaskBoard from './components/TaskBoard';
+import Rails from "@rails/ujs";
+import * as ActiveStorage from "@rails/activestorage";
+import "channels";
+import "material-design-lite/material.js";
+// import WebpackerReact from "webpacker-react";
+// import TaskBoard from "components/TaskBoard";
+// import Foo from "components/Foo.js";
 
-WebpackerReact.setup({ TaskBoard });
+// WebpackerReact.setup({ TaskBoard });
 
 Rails.start();
 ActiveStorage.start();

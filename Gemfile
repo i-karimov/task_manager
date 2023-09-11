@@ -55,11 +55,11 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
+gem 'js-routes'
 gem 'kaminari'
 gem 'ransack'
 gem 'responders'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines'
-gem 'js-routes'gem 'state_machines-activerecord'
-
+gem 'state_machines-activerecord'
