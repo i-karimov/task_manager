@@ -7,17 +7,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $PACKAGES
 
-# ENV NODE_PACKAGE_URL https://unofficial-builds.nodejs.org/download/release/v16.20.2/node-v16.20.2-linux-x64-musl.tar.xz
-# RUN wget $NODE_PACKAGE_URL
-# RUN mkdir -p /opt/nodejs
-# RUN tar -xf node-v16.20.2-linux-x64-musl.tar.xz --directory /opt/nodejs --strip-components=1
-# RUN rm *musl.tar.xz
-# RUN ln -s /opt/nodejs/bin/node /usr/local/bin/node
-# RUN ln -s /opt/nodejs/bin/npm /usr/local/bin/npm
-
-# RUN npm install -g npm@8.19.4
-
-RUN gem install bundler:2.1.4
+RUN gem install bundler:2.3.7
 
 RUN mkdir $RAILS_ROOT
 WORKDIR $RAILS_ROOT
