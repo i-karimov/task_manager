@@ -1,5 +1,5 @@
-import routes from 'routes';
-import FetchHelper from 'utils/fetchHelper';
+import * as routes from "../routes/ApiRoutes.js";
+import FetchHelper from "../utils/fetchHelper";
 
 export default {
   index(params) {
@@ -12,15 +12,15 @@ export default {
     return FetchHelper.get(path);
   },
 
-  update(id, task = {}) {
-    …
-  },
+  // update(id, task = {}) {
+  //   …
+  // },
 
-  create(task = {}) {
-    …
-  },
+  // create(task = {}) {
+  //   …
+  // },
 
-  destroy(id) {
-    …
-  },
+  // destroy(id) {
+  //   …
+  // },
 };
