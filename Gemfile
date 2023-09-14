@@ -13,8 +13,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -40,6 +39,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'pp_sql' # query logs beautifier
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'foreman'
 end
 
 group :test do
