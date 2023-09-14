@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :task do
     name
-    description
+    description { FFaker::LoremRU.sentence }
     association :author, factory: :manager
     association :assignee, factory: :developer
     expired_at

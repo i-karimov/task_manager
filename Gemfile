@@ -29,6 +29,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rubocop'
+  gem "ffaker", "~> 2.22"
 end
 
 group :development do
@@ -40,6 +41,7 @@ group :development do
   gem 'pp_sql' # query logs beautifier
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'foreman'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -71,3 +73,5 @@ gem 'jsbundling-rails', '~> 1.0'
 gem 'cssbundling-rails', '~> 1.0'
 
 gem 'stimulus-rails'
+
+
