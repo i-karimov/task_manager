@@ -276,6 +276,8 @@ GEM
     state_machines-activerecord (0.9.0)
       activerecord (>= 6.0)
       state_machines-activemodel (>= 0.9.0)
+    stimulus-rails (1.2.2)
+      railties (>= 6.0.0)
     temple (0.10.2)
     thor (1.2.2)
     tilt (2.2.0)
@@ -332,6 +334,7 @@ DEPENDENCIES
   sprockets-rails (~> 3.4)
   state_machines
   state_machines-activerecord
+  stimulus-rails
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers

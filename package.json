@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "node_modules/.bin/eslint app/javascript",
     "buld:css": "sass --style compressed  --no-source-map --load-path=node_modules ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --minify --outdir=app/assets/buidls --watch=forever"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --minify --outdir=app/assets/buidls --watch=forever --loader:.js=jsx"
   },
   "dependencies": {
     "@asseinfo/react-kanban": "^2.2.0",
@@ -12,6 +12,7 @@
     "@babel/plugin-proposal-private-methods": "^7.18.6",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-react": "^7.22.15",
+    "@hotwired/stimulus": "^3.2.2",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@rails/actioncable": "^6.0.0",

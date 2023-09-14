@@ -69,3 +69,5 @@ gem 'state_machines-activerecord'
 gem 'sprockets-rails', '~> 3.4'
 gem 'jsbundling-rails', '~> 1.0'
 gem 'cssbundling-rails', '~> 1.0'
+
+gem 'stimulus-rails'

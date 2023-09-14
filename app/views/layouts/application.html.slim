@@ -6,6 +6,9 @@ html lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title= content_for?(:title) ? yield(:title) : "Task Manager"
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
     = csrf_meta_tags
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application", "data-turbo-track": "reload"
