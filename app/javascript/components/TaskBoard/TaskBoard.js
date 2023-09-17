@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import KanbanBoard from "@asseinfo/react-kanban";
 import { propOr } from "ramda";
+import InfiniteScroll from "react-infinite-scroller";
 
 import Task from "../Task";
 import TasksRepository from "../../repositories/TasksRespository";
@@ -28,22 +29,38 @@ const initialBoard = {
 
 function TaskBoard() {
   const [board, setBoard] = useState(initialBoard);
-  const [boardCards, setBoardCards] = useState([]);
+  const [boardCards, setBoardCards] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => loadBoard(), []);
   useEffect(() => generateBoard(), [boardCards]);
+  // useEffect(() => listenScrolling(), []);
+  useEffect(() => console.log(boardCards));
 
-  const loadColumn = (state, page, perPage) =>
-    TasksRepository.index({
+  const loadColumn = (state, page, perPage) => {
+    setIsLoading(true);
+    return TasksRepository.index({
       q: { stateEq: state },
       page,
       perPage,
     });
+  };
 
   const loadColumnInitial = (state, page = 1, perPage = 10) => {
     loadColumn(state, page, perPage).then(({ data: { items, meta } }) => {
       setBoardCards((prevState) => ({
         ...prevState,
         [state]: { cards: items, meta },
+      }));
+    });
+  };
+
+  const loadColumnMore = (state, page, perPage = 10) => {
+    loadColumn(state, page, perPage).then(({ data: { items, meta } }) => {
+      setBoardCards((prevState) => ({
+        ...prevState,
+        [state]: { cards: [...prevState[state].cards, ...items], meta },
       }));
     });
   };
@@ -65,21 +82,38 @@ function TaskBoard() {
     STATES.map(({ key }) => loadColumnInitial(key));
   };
 
-  const loadColumnMore = (state, page = 1, perPage = 10) => {
-    loadColumn(state, page, perPage).then(({ data: { items, meta } }) => {
-      setBoardCards((prevState) => ({
-        ...prevState,
-        [state]: { cards: items, meta },
-      }));
-    });
+  const loadBoardMore = () => {
+    STATES.map(({ key }) => loadColumnMore(key));
+  };
+
+  const handleScroll = (el) => {
+    const {
+      target: {
+        documentElement: { scrollHeight, scrollTop },
+      },
+    } = el;
+    const { innerHeight } = window;
+
+    const shouldLoad = scrollHeight - (scrollTop + innerHeight) < 100;
+    if (shouldLoad && !isLoading) {
+      console.log("Load!");
+      loadBoardMore();
+    }
+  };
+
+  const listenScrolling = () => {
+    document.addEventListener("scroll", handleScroll);
+
+    return () => document.removeEventListener("scroll", handleScroll);
   };
 
   return (
     <KanbanBoard
-      disableColumnDrag
-      renderColumnHeader={(column) => <ColumnHeader column={column} />}
-      onLoadMore={loadColumnMore}
+      renderColumnHeader={(column) => (
+        <ColumnHeader column={column} onLoadMore={loadColumnMore} />
+      )}
       renderCard={(card) => <Task task={card} />}
+      disableColumnDrag
     >
       {board}
     </KanbanBoard>
