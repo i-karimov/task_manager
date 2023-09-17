@@ -17,18 +17,25 @@ const ColumnHeader = ({ column, onLoadMore }) => {
   } = column;
 
   const count = cards.length;
-  const handleLoadMore = () => onLoadMore(id, currentPage + 1);
+  const shouldDisplayButton = currentPage < totalPages;
+
+  const handleLoadMore = () => {
+    onLoadMore(id, currentPage + 1);
+  };
 
   return (
     <div className={styles.root}>
       <div className={styles.title}>
         <b>{title}</b> ({count}/{totalCount || "…"})
       </div>
-      <div className={styles.actions}>
-        <IconButton aria-label="Load more" onClick={() => handleLoadMore()}>
-          <SystemUpdateAltIcon fontSize="small" />
-        </IconButton>
-      </div>
+
+      {shouldDisplayButton && (
+        <div className={styles.actions}>
+          <IconButton aria-label="Load more" onClick={() => handleLoadMore()}>
+            <SystemUpdateAltIcon fontSize="small" />
+          </IconButton>
+        </div>
+      )}
     </div>
   );
 };
