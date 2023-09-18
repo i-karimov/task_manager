@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import KanbanBoard from "@asseinfo/react-kanban";
+import AddIcon from "@material-ui/icons/Add";
+import { Fab } from "@material-ui/core";
 import { propOr } from "ramda";
-import InfiniteScroll from "react-infinite-scroller";
 
-import Task from "../Task";
 import TasksRepository from "../../repositories/TasksRespository";
 
+import Task from "../Task";
 import ColumnHeader from "../ColumnHeader";
+import AddPopup from "../AddPopup";
+import EditPopup from "../EditPopup";
+import TaskForm from "../forms/TaskForm";
+
+import useStyles from "./useStyles";
 
 const STATES = [
   { key: "new_task", value: "New" },
@@ -18,6 +24,12 @@ const STATES = [
   { key: "archived", value: "Archived" },
 ];
 
+const MODES = {
+  ADD: "add",
+  EDIT: "edit",
+  NONE: "none",
+};
+
 const initialBoard = {
   columns: STATES.map((column) => ({
     id: column.key,
@@ -27,19 +39,19 @@ const initialBoard = {
   })),
 };
 
-function TaskBoard() {
+const TaskBoard = () => {
   const [board, setBoard] = useState(initialBoard);
   const [boardCards, setBoardCards] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [mode, setMode] = useState(MODES.NONE);
+  const [openedTaskId, setOpenedTaskId] = useState(null);
 
   useEffect(() => loadBoard(), []);
   useEffect(() => generateBoard(), [boardCards]);
-  // useEffect(() => listenScrolling(), []);
   useEffect(() => console.log(boardCards));
 
+  const styles = useStyles();
+
   const loadColumn = (state, page, perPage) => {
-    setIsLoading(true);
     return TasksRepository.index({
       q: { stateEq: state },
       page,
@@ -86,38 +98,106 @@ function TaskBoard() {
     STATES.map(({ key }) => loadColumnMore(key));
   };
 
-  const handleScroll = (el) => {
-    const {
-      target: {
-        documentElement: { scrollHeight, scrollTop },
-      },
-    } = el;
-    const { innerHeight } = window;
-
-    const shouldLoad = scrollHeight - (scrollTop + innerHeight) < 100;
-    if (shouldLoad && !isLoading) {
-      console.log("Load!");
-      loadBoardMore();
+  const handleCardDragEnd = (task, source, destination) => {
+    const transition = task.transitions.find(
+      ({ to }) => destination.toColumnId === to
+    );
+    if (!transition) {
+      return null;
     }
+
+    return TasksRepository.update(task.id, { stateEvent: transition.event })
+      .then(() => {
+        loadColumnInitial(destination.toColumnId);
+        loadColumnInitial(source.fromColumnId);
+      })
+      .catch((error) => {
+        alert(`Move failed! ${error.message}`);
+      });
   };
 
-  const listenScrolling = () => {
-    document.addEventListener("scroll", handleScroll);
+  const handleAddPopupOpen = () => {
+    console.log("open ");
+    setMode(MODES.ADD);
+  };
 
-    return () => document.removeEventListener("scroll", handleScroll);
+  const handleTaskCreate = (params) => {
+    const attributes = TaskForm.attributesToSubmit(params);
+
+    return TasksRepository.create(attributes).then(({ data: { task } }) => {
+      loadColumnInitial(task.state);
+      setMode(MODES.NONE);
+    });
+  };
+
+  const loadTask = (id) => {
+    return TasksRepository.show(id).then(({ data: { task } }) => task);
+  };
+
+  const handleTaskUpdate = (task) => {
+    const attributes = TaskForm.attributesToSubmit(task);
+
+    return TasksRepository.update(task.id, attributes).then(() => {
+      loadColumnInitial(task.state);
+      handleClose();
+    });
+  };
+
+  const hadleTaskDestroy = (task) => {
+    return TasksRepository.destroy(task.id).then(() => {
+      loadColumnInitial(task.state);
+      handleClose();
+    });
+  };
+
+  const handleEditPopupOpen = (task) => {
+    setOpenedTaskId(task.id);
+    setMode(MODES.EDIT);
+  };
+
+  const handleClose = () => {
+    setMode(MODES.NONE);
+    setOpenedTaskId(null);
   };
 
   return (
-    <KanbanBoard
-      renderColumnHeader={(column) => (
-        <ColumnHeader column={column} onLoadMore={loadColumnMore} />
+    <>
+      <KanbanBoard
+        renderColumnHeader={(column) => (
+          <ColumnHeader column={column} onLoadMore={loadColumnMore} />
+        )}
+        onCardDragEnd={handleCardDragEnd}
+        renderCard={(card) => (
+          <Task onClick={handleEditPopupOpen} task={card} />
+        )}
+        disableColumnDrag
+      >
+        {board}
+      </KanbanBoard>
+      <Fab
+        onClick={handleAddPopupOpen}
+        className={styles.addButton}
+        color="primary"
+        aria-label="add"
+      >
+        <AddIcon />
+      </Fab>
+
+      {mode === MODES.ADD && (
+        <AddPopup onCardCreate={handleTaskCreate} onClose={handleClose} />
       )}
-      renderCard={(card) => <Task task={card} />}
-      disableColumnDrag
-    >
-      {board}
-    </KanbanBoard>
+
+      {mode === MODES.EDIT && (
+        <EditPopup
+          onCardLoad={loadTask}
+          onCardDestroy={hadleTaskDestroy}
+          onCardUpdate={handleTaskUpdate}
+          onClose={handleClose}
+          cardId={openedTaskId}
+        />
+      )}
+    </>
   );
-}
+};
 
 export default TaskBoard;
