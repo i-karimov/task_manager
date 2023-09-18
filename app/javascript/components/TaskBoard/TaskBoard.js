@@ -47,7 +47,6 @@ const TaskBoard = () => {
 
   useEffect(() => loadBoard(), []);
   useEffect(() => generateBoard(), [boardCards]);
-  useEffect(() => console.log(boardCards));
 
   const styles = useStyles();
 
@@ -117,7 +116,6 @@ const TaskBoard = () => {
   };
 
   const handleAddPopupOpen = () => {
-    console.log("open ");
     setMode(MODES.ADD);
   };
 

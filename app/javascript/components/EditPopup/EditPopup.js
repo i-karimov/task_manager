@@ -56,7 +56,11 @@ const EditPopup = ({
       alert(`Destrucion Failed! Error: ${error.message}`);
     });
   };
+
   const isLoading = isNil(task);
+
+  const handleChangeSelect = (fieldName) => (user) =>
+    onChange({ ...task, [fieldName]: user });
 
   return (
     <Modal className={styles.modal} open onClose={onClose}>
