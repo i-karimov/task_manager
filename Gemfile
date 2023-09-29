@@ -66,3 +66,4 @@ gem 'state_machines'
 gem 'state_machines-activerecord'
 gem 'stimulus-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'sidekiq-unique-jobs'
