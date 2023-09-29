@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letters' if Rails.env.development?
   mount Sidekiq::Web => '/sidekiq'

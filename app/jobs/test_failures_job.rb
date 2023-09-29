@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
-class ApplicationJob
+class TestFailuresJob
   include Sidekiq::Worker
+
+  def perform
+    raise
+  end
 end

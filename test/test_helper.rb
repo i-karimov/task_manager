@@ -19,5 +19,6 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     include FactoryBot::Syntax::Methods
     include AuthHelper
+    Sidekiq::Testing.inline!
   end
 end
