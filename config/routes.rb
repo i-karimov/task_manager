@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
-  root to: 'web/boards#show'
+require 'sidekiq/web'
 
-  mount LetterOpenerWeb::Engine, at: "/letters" if Rails.env.development?
+Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letters' if Rails.env.development?
+  mount Sidekiq::Web => '/sidekiq'
+
+  root to: 'web/boards#show'
 
   scope module: :web do
     resource :board, only: [:show]

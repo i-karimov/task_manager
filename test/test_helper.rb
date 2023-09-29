@@ -4,6 +4,7 @@ require 'simplecov'
 SimpleCov.start
 
 ENV['RAILS_ENV'] ||= 'test'
+require 'sidekiq/testing'
 require_relative '../config/environment'
 require 'rails/test_help'
 

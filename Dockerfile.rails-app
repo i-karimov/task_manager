@@ -7,16 +7,16 @@ RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $PACKAGES
 
-RUN adduser -D docker && mkdir -p /etc/sudoers.d \
-        && echo "docker ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/docker \
-        && chmod 0440 /etc/sudoers.d/docker
+# RUN adduser -D docker && mkdir -p /etc/sudoers.d \
+#         && echo "docker ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/docker \
+#         && chmod 0440 /etc/sudoers.d/docker
 
 RUN mkdir $RAILS_ROOT
 WORKDIR $RAILS_ROOT
 
-RUN chown docker $RAILS_ROOT
+# RUN chown docker $RAILS_ROOT
 
-USER docker 
+# USER docker 
 
 RUN gem install bundler:2.3.7
 

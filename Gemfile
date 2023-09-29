@@ -5,13 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.1'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.0.8'
-# Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
-# Use Puma as the app server
 gem 'puma', '~> 5.0'
-# Use SCSS for stylesheets
+gem 'rails', '~> 7.0.8'
 gem 'sass-rails', '>= 6'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,7 +21,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'ffaker', '~> 2.22'
@@ -33,51 +28,40 @@ group :development, :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 4.1.0'
-  # Display performance information such as SQL time and flame graphs for each request in your browser.
-  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'bullet'
   gem 'foreman'
-  gem 'listen', '~> 3.3'
-  gem 'pp_sql' # query logs beautifier
-  gem 'pry-rails'
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'letter_opener'
   gem 'letter_opener_web'
+  gem 'listen', '~> 3.3'
+  gem 'pp_sql'
+  gem 'pry-rails'
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'web-console', '>= 4.1.0'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
-  # Easy installation and use of web drivers to run system tests with browsers
   gem 'simplecov', require: false
-  gem 'webdrivers'
+  gem 'webdrivers', '= 5.3.0'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
-gem 'js-routes'
-gem 'kaminari'
-gem 'ransack'
-gem 'responders'
-gem 'simple_form'
-gem 'slim-rails'
-gem 'state_machines'
-gem 'state_machines-activerecord'
-
-##
-
+gem 'coveralls_reborn', require: false
 gem 'cssbundling-rails', '~> 1.0'
 gem 'jsbundling-rails', '~> 1.0'
-gem 'sprockets-rails', '~> 3.4'
-
-gem 'bullet'
-gem 'coveralls_reborn', require: false
+gem 'js-routes'
+gem 'kaminari'
 gem 'newrelic_rpm'
+gem 'ransack'
+gem 'responders'
 gem 'rollbar'
+gem 'sidekiq'
+gem 'simple_form'
+gem 'slim-rails'
+gem 'sprockets-rails', '~> 3.4'
+gem 'state_machines'
+gem 'state_machines-activerecord'
 gem 'stimulus-rails'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
