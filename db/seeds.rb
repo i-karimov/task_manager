@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # admin = Admin.find_or_create_by(first_name: 'admin', last_name: 'admin', email: 'admin@localhost')
 # admin.password = 'admin'
 # admin.save
@@ -24,5 +26,5 @@ states = Task.state_machine.states.keys
 end
 
 Task.order(:id).find_each.with_index do |task, ix|
-  task.update(id: ix, name: "Task #{ix+1}")
+  task.update(id: ix, name: "Task #{ix + 1}")
 end

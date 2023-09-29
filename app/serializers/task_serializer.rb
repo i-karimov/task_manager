@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TaskSerializer < ApplicationSerializer
   attributes :id, :name, :description, :state, :expired_at, :transitions
   belongs_to :author

@@ -13,7 +13,7 @@ class SessionForm
   validate :user_valid?
 
   def user
-    User.find_by(email: email)
+    User.find_by(email:)
   end
 
   private

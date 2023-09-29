@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class Admin::UsersControllerTest < ActionController::TestCase
@@ -30,7 +32,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
 
   test 'should post create' do
     user = attributes_for(:user)
-    post :create, params: { user: user }
+    post :create, params: { user: }
     assert_response :redirect
   end
 
