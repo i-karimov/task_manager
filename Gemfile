@@ -76,5 +76,5 @@ gem 'cssbundling-rails', '~> 1.0'
 
 gem 'stimulus-rails'
 gem 'coveralls_reborn', require: false
-
-
+gem 'bullet'
+gem 'rollbar'
