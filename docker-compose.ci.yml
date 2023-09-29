@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:10.3-alpine
+  ci:
+    build:
+      context: .
+      dockerfile: Dockerfile.rails-app
+    depends_on:
+      - db
+    environment:
+      - COVERAGE
+      - RAILS_ENV
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=postgres
+    command: sh -c "bundle exec rails db:create db:migrate && bundle exec rake test"
