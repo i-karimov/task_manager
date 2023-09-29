@@ -1,16 +1,24 @@
 FROM ruby:3.1.1-alpine
 
-ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl libstdc++ yarn nodejs less tzdata git postgresql-client bash screen gcompat"
+ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl libstdc++ yarn nodejs less tzdata git postgresql-client bash screen gcompat su-exec sudo"
 ARG RAILS_ROOT=/rails_app
 
 RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $PACKAGES
 
-RUN gem install bundler:2.3.7
+RUN adduser -D docker && mkdir -p /etc/sudoers.d \
+        && echo "docker ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/docker \
+        && chmod 0440 /etc/sudoers.d/docker
 
 RUN mkdir $RAILS_ROOT
 WORKDIR $RAILS_ROOT
+
+RUN chown docker $RAILS_ROOT
+
+USER docker 
+
+RUN gem install bundler:2.3.7
 
 COPY Gemfile Gemfile.lock  ./
 RUN bundle install --jobs 5

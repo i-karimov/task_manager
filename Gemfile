@@ -78,3 +78,4 @@ gem 'stimulus-rails'
 gem 'coveralls_reborn', require: false
 gem 'bullet'
 gem 'rollbar'
+gem 'newrelic_rpm'
