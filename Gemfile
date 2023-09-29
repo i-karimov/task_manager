@@ -43,6 +43,8 @@ group :development do
   gem 'pp_sql' # query logs beautifier
   gem 'pry-rails'
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do
