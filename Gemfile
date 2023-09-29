@@ -42,6 +42,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'foreman'
   gem 'pry-rails'
+  gem 'bullet'
 end
 
 group :test do
