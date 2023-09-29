@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'ffaker', '~> 2.22'
@@ -28,7 +29,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'bullet'
   gem 'foreman'
   gem 'letter_opener'
   gem 'letter_opener_web'

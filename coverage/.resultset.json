@@ -37,6 +37,7 @@
           null,
           null,
           1,
+          1,
           null,
           null
         ]
@@ -487,6 +488,19 @@
           null
         ]
       },
+      "/rails_app/config/initializers/sidekiq.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
       "/rails_app/config/initializers/simple_form.rb": {
         "lines": [
           null,
@@ -785,6 +799,9 @@
         "lines": [
           null,
           null,
+          1,
+          null,
+          1,
           1,
           1,
           null,
@@ -1180,6 +1197,202 @@
           null
         ]
       },
+      "/rails_app/app/controllers/web/sessions_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/rails_app/app/controllers/web/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/rails_app/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/rails_app/app/helpers/application_helper.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/rails_app/app/helpers/pages_helper.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/rails_app/app/forms/session_form.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          3,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
+      "/rails_app/app/models/task.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/rails_app/app/mailers/user_mailer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null
+        ]
+      },
+      "/rails_app/app/mailers/application_mailer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/rails_app/app/controllers/web/boards_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/rails_app/app/controllers/admin/users_controller.rb": {
         "lines": [
           null,
@@ -1256,30 +1469,6 @@
           1,
           7,
           null,
-          null
-        ]
-      },
-      "/rails_app/app/controllers/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/rails_app/app/helpers/application_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/rails_app/app/helpers/pages_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
           null
         ]
       },
@@ -1414,88 +1603,11 @@
           null
         ]
       },
-      "/rails_app/app/controllers/web/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
       "/rails_app/app/models/developer.rb": {
         "lines": [
           null,
           null,
           1,
-          null
-        ]
-      },
-      "/rails_app/app/controllers/web/sessions_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/rails_app/app/forms/session_form.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          3,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          0,
-          null,
           null
         ]
       },
@@ -1554,59 +1666,6 @@
           null
         ]
       },
-      "/rails_app/app/models/task.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
       "/rails_app/app/serializers/task_serializer.rb": {
         "lines": [
           null,
@@ -1627,50 +1686,8 @@
           null,
           null
         ]
-      },
-      "/rails_app/app/mailers/user_mailer.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          2,
-          2,
-          null,
-          2,
-          null,
-          null
-        ]
-      },
-      "/rails_app/app/mailers/application_mailer.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/rails_app/app/controllers/web/boards_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
       }
     },
-    "timestamp": 1695963522
+    "timestamp": 1695970644
   }
 }
